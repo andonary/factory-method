@@ -1,10 +1,10 @@
 import {Factory} from "./factory";
 import {UnitName} from "../../utils/enums/unitName";
 import {Unit} from "../products/unit";
-import {GroundUnit} from "../products/groundUnit";
+import {SeaUnit} from "../products/seaUnit";
 
-export class GroundFactory extends Factory {
+export class Port extends Factory {
     factoryMethod(name: UnitName): Promise<Unit> {
-        return Promise.resolve(new GroundUnit(name));
+        return Promise.resolve(new SeaUnit(name));
     }
 }

@@ -2,6 +2,10 @@ import {UnitName} from "../src/utils/enums/unitName";
 import {Unit} from "../src/pattern/products/unit";
 import {GroundFactory} from "../src/pattern/creators/groundFactory";
 import {isUnit} from "../src/utils/predicates/isUnit";
+import {isGroundUnit} from "../src/utils/checkers/isGroundUnit";
+import {isSeaUnit} from "../src/utils/checkers/isSeaUnit";
+import {isAirUnit} from "../src/utils/checkers/isAirUnit";
+import {Port} from "../src/pattern/creators/port";
 
 describe('Make units', () => {
     test('it should create an Unit called Infantry', async () => {
@@ -42,5 +46,31 @@ describe('Make units', () => {
 
         // Assert
         expect(error).toBeDefined();
+    });
+
+    test('it should make a ground type unit', async () => {
+        // Arrange
+        const groundFactory = new GroundFactory();
+
+        // Act
+        const recon: Unit = await groundFactory.makeUnit(UnitName.recon);
+
+        // Assert
+        expect(isGroundUnit(recon)).toEqual(true);
+        expect(isSeaUnit(recon)).toEqual(false);
+        expect(isAirUnit(recon)).toEqual(false);
+    });
+
+    test('it should make a sea type unit', async () => {
+        // Arrange
+        const port = new Port();
+
+        // Act
+        const lander: Unit = await port.makeUnit(UnitName.lander);
+
+        // Assert
+        expect(isGroundUnit(lander)).toEqual(false);
+        expect(isSeaUnit(lander)).toEqual(true);
+        expect(isAirUnit(lander)).toEqual(false);
     });
 });

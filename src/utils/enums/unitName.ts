@@ -1,4 +1,6 @@
 export enum UnitName {
     infantry = 'Infantry',
-    mech = 'Mech'
+    mech = 'Mech',
+    recon = 'Recon',
+    lander = 'Lander',
 }
