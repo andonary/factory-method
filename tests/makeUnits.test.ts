@@ -6,6 +6,7 @@ import {isGroundUnit} from "../src/utils/checkers/isGroundUnit";
 import {isSeaUnit} from "../src/utils/checkers/isSeaUnit";
 import {isAirUnit} from "../src/utils/checkers/isAirUnit";
 import {Port} from "../src/pattern/creators/port";
+import {Airport} from "../src/pattern/creators/airport";
 
 describe('Make units', () => {
     test('it should create an Unit called Infantry', async () => {
@@ -72,5 +73,18 @@ describe('Make units', () => {
         expect(isGroundUnit(lander)).toEqual(false);
         expect(isSeaUnit(lander)).toEqual(true);
         expect(isAirUnit(lander)).toEqual(false);
+    });
+
+    test('it should make an air type unit', async () => {
+        // Arrange
+        const airPort = new Airport();
+
+        // Act
+        const tCopter = await airPort.makeUnit(UnitName.tCopter);
+
+        // Assert
+        expect(isGroundUnit(tCopter)).toEqual(false);
+        expect(isSeaUnit(tCopter)).toEqual(false);
+        expect(isAirUnit(tCopter)).toEqual(true);
     });
 });

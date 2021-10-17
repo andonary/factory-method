@@ -1,5 +1,6 @@
 import {Unit} from "../../pattern/products/unit";
+import {UnitType} from "../enums/unitType";
 
 export function isAirUnit(unit: Unit) {
-    return false;
+    return unit.type === UnitType.air;
 }

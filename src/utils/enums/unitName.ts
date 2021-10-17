@@ -3,4 +3,5 @@ export enum UnitName {
     mech = 'Mech',
     recon = 'Recon',
     lander = 'Lander',
+    tCopter = 'T Copter',
 }
