@@ -1,5 +1,5 @@
 import {UnitName} from "../src/utils/enums/unitName";
-import {Unit} from "../src/pattern/products/unit";
+import {Unit} from "../src/pattern/products/parent/unit";
 import {GroundFactory} from "../src/pattern/creators/groundFactory";
 import {isUnit} from "../src/utils/predicates/isUnit";
 import {isGroundUnit} from "../src/utils/checkers/isGroundUnit";

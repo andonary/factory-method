@@ -1,4 +1,4 @@
-import {Unit} from "../../pattern/products/unit";
+import {Unit} from "../../pattern/products/parent/unit";
 import {UnitType} from "../enums/unitType";
 
 export function isSeaUnit(unit: Unit) {

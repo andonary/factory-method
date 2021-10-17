@@ -1,4 +1,4 @@
-import {Unit} from "./unit";
+import {Unit} from "./parent/unit";
 import {UnitType} from "../../utils/enums/unitType";
 import {UnitName} from "../../utils/enums/unitName";
 
