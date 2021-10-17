@@ -8,13 +8,13 @@ import {isAirUnit} from "../src/utils/checkers/isAirUnit";
 import {Port} from "../src/pattern/creators/port";
 import {Airport} from "../src/pattern/creators/airport";
 
-describe('Make units', () => {
+describe('Makes unit', () => {
     test('it should create an Unit called Infantry', async () => {
         // Arrange
         const groundFactory = new GroundFactory();
 
         // Act
-        const infantry: Unit = await groundFactory.makeUnit(UnitName.infantry);
+        const infantry: Unit = await groundFactory.makesUnit(UnitName.infantry);
 
         // Assert
         expect(isUnit(infantry)).toBeTruthy();
@@ -26,7 +26,7 @@ describe('Make units', () => {
         const groundFactory = new GroundFactory();
 
         // Act
-        const mech: Unit = await groundFactory.makeUnit(UnitName.mech);
+        const mech: Unit = await groundFactory.makesUnit(UnitName.mech);
 
         // Assert
         expect(isUnit(mech)).toBeTruthy();
@@ -40,7 +40,7 @@ describe('Make units', () => {
 
         // Act
         try {
-            await groundFactory.makeUnit("Swordman" as UnitName);
+            await groundFactory.makesUnit("Swordman" as UnitName);
         } catch (e) {
             error = e;
         }
@@ -54,7 +54,7 @@ describe('Make units', () => {
         const groundFactory = new GroundFactory();
 
         // Act
-        const recon: Unit = await groundFactory.makeUnit(UnitName.recon);
+        const recon: Unit = await groundFactory.makesUnit(UnitName.recon);
 
         // Assert
         expect(isGroundUnit(recon)).toEqual(true);
@@ -67,7 +67,7 @@ describe('Make units', () => {
         const port = new Port();
 
         // Act
-        const lander: Unit = await port.makeUnit(UnitName.lander);
+        const lander: Unit = await port.makesUnit(UnitName.lander);
 
         // Assert
         expect(isGroundUnit(lander)).toEqual(false);
@@ -80,7 +80,7 @@ describe('Make units', () => {
         const airPort = new Airport();
 
         // Act
-        const tCopter = await airPort.makeUnit(UnitName.tCopter);
+        const tCopter = await airPort.makesUnit(UnitName.tCopter);
 
         // Assert
         expect(isGroundUnit(tCopter)).toEqual(false);
