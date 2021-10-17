@@ -12,25 +12,27 @@ describe('Makes unit', () => {
     test('it should create an Unit called Infantry', () => {
         // Arrange
         const groundFactory = new GroundFactory();
+        const {infantry} = UnitName;
 
         // Act
-        const infantry: Unit = groundFactory.makesUnit(UnitName.infantry);
+        const infantryProduced: Unit = groundFactory.makesUnit(infantry);
 
         // Assert
-        expect(isUnit(infantry)).toBeTruthy();
-        expect(infantry.name).toEqual(UnitName.infantry);
+        expect(isUnit(infantryProduced)).toBeTruthy();
+        expect(infantryProduced.name).toEqual(infantry);
     });
 
     test('it should create an Unit called Mech', () => {
         // Arrange
         const groundFactory = new GroundFactory();
+        const {mech} = UnitName;
 
         // Act
-        const mech: Unit = groundFactory.makesUnit(UnitName.mech);
+        const mechProduced: Unit = groundFactory.makesUnit(mech);
 
         // Assert
-        expect(isUnit(mech)).toBeTruthy();
-        expect(mech.name).toEqual(UnitName.mech);
+        expect(isUnit(mechProduced)).toBeTruthy();
+        expect(mechProduced.name).toEqual(mech);
     });
 
     test('it should not create an unknown unit', () => {
@@ -52,39 +54,42 @@ describe('Makes unit', () => {
     test('it should make a ground type unit', () => {
         // Arrange
         const groundFactory = new GroundFactory();
+        const {recon} = UnitName
 
         // Act
-        const recon: Unit = groundFactory.makesUnit(UnitName.recon);
+        const reconProduced: Unit = groundFactory.makesUnit(recon);
 
         // Assert
-        expect(isGroundUnit(recon)).toEqual(true);
-        expect(isSeaUnit(recon)).toEqual(false);
-        expect(isAirUnit(recon)).toEqual(false);
+        expect(isGroundUnit(reconProduced)).toEqual(true);
+        expect(isSeaUnit(reconProduced)).toEqual(false);
+        expect(isAirUnit(reconProduced)).toEqual(false);
     });
 
     test('it should make a sea type unit', () => {
         // Arrange
         const port = new Port();
+        const {lander} = UnitName;
 
         // Act
-        const lander: Unit = port.makesUnit(UnitName.lander);
+        const landerProduced: Unit = port.makesUnit(lander);
 
         // Assert
-        expect(isGroundUnit(lander)).toEqual(false);
-        expect(isSeaUnit(lander)).toEqual(true);
-        expect(isAirUnit(lander)).toEqual(false);
+        expect(isGroundUnit(landerProduced)).toEqual(false);
+        expect(isSeaUnit(landerProduced)).toEqual(true);
+        expect(isAirUnit(landerProduced)).toEqual(false);
     });
 
     test('it should make an air type unit', () => {
         // Arrange
         const airPort = new Airport();
+        const {tCopter} = UnitName;
 
         // Act
-        const tCopter = airPort.makesUnit(UnitName.tCopter);
+        const tCopterProduced = airPort.makesUnit(tCopter);
 
         // Assert
-        expect(isGroundUnit(tCopter)).toEqual(false);
-        expect(isSeaUnit(tCopter)).toEqual(false);
-        expect(isAirUnit(tCopter)).toEqual(true);
+        expect(isGroundUnit(tCopterProduced)).toEqual(false);
+        expect(isSeaUnit(tCopterProduced)).toEqual(false);
+        expect(isAirUnit(tCopterProduced)).toEqual(true);
     });
 });
