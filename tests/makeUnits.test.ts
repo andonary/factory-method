@@ -1,10 +1,14 @@
 abstract class Factory {
     abstract makeUnit(name: UnitName): Promise<Unit>
+
+    isInvalidUnit(name: UnitName) {
+        return !Object.values(UnitName).includes((name as UnitName));
+    }
 }
 
 class GroundFactory extends Factory {
     async makeUnit(name: UnitName): Promise<Unit> {
-        if (!Object.values(UnitName).includes((name as UnitName))) throw new Error();
+        if (this.isInvalidUnit(name)) throw new Error();
         return {
             name
         }
