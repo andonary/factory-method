@@ -1,4 +1,8 @@
-class GroundFactory {
+abstract class Factory {
+    abstract makeUnit(name: UnitName): Promise<Unit>
+}
+
+class GroundFactory extends Factory {
     async makeUnit(name: UnitName): Promise<Unit> {
         if (!Object.values(UnitName).includes((name as UnitName))) throw new Error();
         return {
