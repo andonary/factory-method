@@ -4,7 +4,7 @@ import {Unit} from "../products/parent/unit";
 import {AirUnit} from "../products/airUnit";
 
 export class Airport extends Factory {
-    factoryMethod(name: UnitName): Promise<Unit> {
-        return Promise.resolve(new AirUnit(name));
+    factoryMethod(name: UnitName): Unit {
+        return new AirUnit(name);
     }
 }

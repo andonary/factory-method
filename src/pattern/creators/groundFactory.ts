@@ -4,7 +4,7 @@ import {Unit} from "../products/parent/unit";
 import {GroundUnit} from "../products/groundUnit";
 
 export class GroundFactory extends Factory {
-    factoryMethod(name: UnitName): Promise<Unit> {
-        return Promise.resolve(new GroundUnit(name));
+    factoryMethod(name: UnitName): Unit {
+        return new GroundUnit(name);
     }
 }

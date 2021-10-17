@@ -9,38 +9,38 @@ import {Port} from "../src/pattern/creators/port";
 import {Airport} from "../src/pattern/creators/airport";
 
 describe('Makes unit', () => {
-    test('it should create an Unit called Infantry', async () => {
+    test('it should create an Unit called Infantry', () => {
         // Arrange
         const groundFactory = new GroundFactory();
 
         // Act
-        const infantry: Unit = await groundFactory.makesUnit(UnitName.infantry);
+        const infantry: Unit = groundFactory.makesUnit(UnitName.infantry);
 
         // Assert
         expect(isUnit(infantry)).toBeTruthy();
         expect(infantry.name).toEqual(UnitName.infantry);
     });
 
-    test('it should create an Unit called Mech', async () => {
+    test('it should create an Unit called Mech', () => {
         // Arrange
         const groundFactory = new GroundFactory();
 
         // Act
-        const mech: Unit = await groundFactory.makesUnit(UnitName.mech);
+        const mech: Unit = groundFactory.makesUnit(UnitName.mech);
 
         // Assert
         expect(isUnit(mech)).toBeTruthy();
         expect(mech.name).toEqual(UnitName.mech);
     });
 
-    test('it should not create an unknown unit', async () => {
+    test('it should not create an unknown unit', () => {
         // Arrange
         const groundFactory = new GroundFactory();
         let error;
 
         // Act
         try {
-            await groundFactory.makesUnit("Swordman" as UnitName);
+            groundFactory.makesUnit("Swordman" as UnitName);
         } catch (e) {
             error = e;
         }
@@ -49,12 +49,12 @@ describe('Makes unit', () => {
         expect(error).toBeDefined();
     });
 
-    test('it should make a ground type unit', async () => {
+    test('it should make a ground type unit', () => {
         // Arrange
         const groundFactory = new GroundFactory();
 
         // Act
-        const recon: Unit = await groundFactory.makesUnit(UnitName.recon);
+        const recon: Unit = groundFactory.makesUnit(UnitName.recon);
 
         // Assert
         expect(isGroundUnit(recon)).toEqual(true);
@@ -62,12 +62,12 @@ describe('Makes unit', () => {
         expect(isAirUnit(recon)).toEqual(false);
     });
 
-    test('it should make a sea type unit', async () => {
+    test('it should make a sea type unit', () => {
         // Arrange
         const port = new Port();
 
         // Act
-        const lander: Unit = await port.makesUnit(UnitName.lander);
+        const lander: Unit = port.makesUnit(UnitName.lander);
 
         // Assert
         expect(isGroundUnit(lander)).toEqual(false);
@@ -75,12 +75,12 @@ describe('Makes unit', () => {
         expect(isAirUnit(lander)).toEqual(false);
     });
 
-    test('it should make an air type unit', async () => {
+    test('it should make an air type unit', () => {
         // Arrange
         const airPort = new Airport();
 
         // Act
-        const tCopter = await airPort.makesUnit(UnitName.tCopter);
+        const tCopter = airPort.makesUnit(UnitName.tCopter);
 
         // Assert
         expect(isGroundUnit(tCopter)).toEqual(false);
