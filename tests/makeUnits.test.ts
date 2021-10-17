@@ -1,32 +1,7 @@
-abstract class Factory {
-    abstract makeUnit(name: UnitName): Promise<Unit>
-
-    isInvalidUnit(name: UnitName) {
-        return !Object.values(UnitName).includes((name as UnitName));
-    }
-}
-
-class GroundFactory extends Factory {
-    async makeUnit(name: UnitName): Promise<Unit> {
-        if (this.isInvalidUnit(name)) throw new Error();
-        return {
-            name
-        }
-    }
-}
-
-interface Unit {
-    name: string;
-}
-
-function isUnit(unit: Unit): unit is Unit {
-    return (unit as Unit).name !== void 0;
-}
-
-enum UnitName {
-    infantry='Infantry',
-    mech='Mech'
-}
+import {UnitName} from "../src/utils/enums/unitName";
+import {Unit} from "../src/pattern/products/unit";
+import {GroundFactory} from "../src/pattern/creators/groundFactory";
+import {isUnit} from "../src/utils/predicates/isUnit";
 
 describe('Make units', () => {
     test('it should create an Unit called Infantry', async () => {
