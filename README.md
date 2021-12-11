@@ -35,9 +35,10 @@ Units are divided in three categories :
 
 ## Architecture
 
-The pattern is represented in folder `src/pattern`. 
+Folder `src/utils` doesn't need to be considered if you are interested about the pattern.
 
-Folder `src/pattern` doesn't need to be considered if you are interested about the pattern. 
+Folder `src/pattern` represent the pattern itself.
+
 It's hold some business logic, which should be moved to a more convenient folder. 
 But this is not the focus of this repository.
 
